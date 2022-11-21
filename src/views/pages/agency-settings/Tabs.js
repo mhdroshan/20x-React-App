@@ -2,7 +2,7 @@
 import { Nav, NavItem, NavLink } from 'reactstrap'
 
 // ** Icons Imports
-import { User, Bookmark, Link, Bell, Settings, Users, UserPlus } from 'react-feather'
+import { User, Bookmark, Link, Bell, Settings, Users, UserPlus, DollarSign, Folder } from 'react-feather'
 
 const Tabs = ({ activeTab, toggleTab }) => {
   return (
@@ -27,14 +27,32 @@ const Tabs = ({ activeTab, toggleTab }) => {
       </NavItem>
       <NavItem>
         <NavLink active={activeTab === '4'} onClick={() => toggleTab('4')}>
-          <Bell size={18} className='me-50' />
-          <span className='fw-bold'>Notifications</span>
+          <DollarSign size={18} className='me-50' />
+          <span className='fw-bold'>Fianance</span>
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink active={activeTab === '5'} onClick={() => toggleTab('5')}>
+          <Folder size={18} className='me-50' />
+          <span className='fw-bold'>Documents</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '6'} onClick={() => toggleTab('6')}>
           <Link size={18} className='me-50' />
-          <span className='fw-bold'>Connections</span>
+          <span className='fw-bold'>Admin Users/ role</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '7'} onClick={() => toggleTab('7')}>
+          <Link size={18} className='me-50' />
+          <span className='fw-bold'>Notification</span>
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink active={activeTab === '8'} onClick={() => toggleTab('8')}>
+          <Link size={18} className='me-50' />
+          <span className='fw-bold'>Module manager</span>
         </NavLink>
       </NavItem>
     </Nav>

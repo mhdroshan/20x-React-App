@@ -10,16 +10,19 @@ import Sidebar from './Sidebar'
 import SidebarBranch from './SidebarBranch'
 import SidebarStaffTerms from './SidebarStaffTerms'
 import SidebarBranchManager from './SidebarBranchManager'
-import { Edit, User,  Heart, BookOpen, Globe, Check, X, Layers, Server } from 'react-feather'
+import SidebarTransport from './SidebarTransport'
+import ModalNeutralVendors from './ModalNeutralVendors'
+
+import { Edit, User,  Heart, BookOpen, Globe, Check, X, Layers, Server, Truck } from 'react-feather'
 import Select, { components } from 'react-select' // eslint-disable-line
 // ** Reactstrap Imports
 import { Row, Col, Form, Card, Input, Label, Button, CardBody, CardTitle, CardHeader, FormFeedback, UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle, FormText } from 'reactstrap'
 
 // ** Utils
-import { selectThemeColors } from '@utils'
+// import { selectThemeColors } from '@utils'
 
 // ** Demo Components
-import DeleteAccount from '../DeleteAccount'
+// import DeleteAccount from '../DeleteAccount'
 
 
 // const timeZoneOptions = [
@@ -84,28 +87,30 @@ const CustomLabel = ({ htmlFor }) => {
     </Label>
   )
 }
-const neutrlVendorsOptions = [
-  { value: 'RGN', label: 'RGN', isFixed: true },
-  { value: 'HCA', label: 'HCA', isFixed: true },
-  { value: 'SHCA', label: 'SHCA', isFixed: true }
-]
-const sectorsOption = [
-  { value: 'Hospital', label: 'Hospital', isFixed: true },
-  { value: 'Education', label: 'Education', isFixed: true },
-  { value: 'Industrial', label: 'Industrial', isFixed: true }
-]
+// const neutrlVendorsOptions = [
+//   { value: 'RGN', label: 'RGN', isFixed: true },
+//   { value: 'HCA', label: 'HCA', isFixed: true },
+//   { value: 'SHCA', label: 'SHCA', isFixed: true }
+// ]
+// const sectorsOption = [
+//   { value: 'Hospital', label: 'Hospital', isFixed: true },
+//   { value: 'Education', label: 'Education', isFixed: true },
+//   { value: 'Industrial', label: 'Industrial', isFixed: true }
+// ]
 const AccountTabs = ({ }) => {
   // ** Hooks
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [sidebarOpenTerms, setSidebarOpenTerms] = useState(false)
   const [sidebarOpenStaffTerms, setSidebarOpenStaffTerms] = useState(false)
   const [sidebarOpenBranchManager, setSidebarBranchManager] = useState(false)
+  const [sidebarOpenTransport, setSidebarTransport] = useState(false)
 
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
   const toggleSidebarTerms = () => setSidebarOpenTerms(!sidebarOpenTerms)
   const toggleSidebarStaffTerms = () => setSidebarOpenStaffTerms(!sidebarOpenStaffTerms)
   const toggleSidebarBranchManager = () => setSidebarBranchManager(!sidebarOpenBranchManager)
+  const toggleSidebarTransport = () => setSidebarTransport(!sidebarOpenTransport)
   // change sector icons
   const OptionComponent = ({ data, ...props }) => {
     const Icon = data.icon
@@ -121,7 +126,6 @@ const AccountTabs = ({ }) => {
     <Fragment>
       <Row>
       <Col lg='4' sm='6'>
-        
       <Col lg='12' sm='12'>
         <Card className='card-transaction'>
             <CardBody>
@@ -138,40 +142,7 @@ const AccountTabs = ({ }) => {
             </CardBody>
           </Card>
         </Col>
-        <Col lg='12' sm='12'>
-        <Card className='card-transaction'>
-            <CardBody>
-              <div className='transaction-item'>
-                  <div className='d-flex'>
-                    <Avatar className='rounded' color='light-secondary' icon={<Layers size={18} />} />
-                    <div>
-                      <h6 className='transaction-title'>Staff agreement</h6>
-                      <small>Edit/Add agency agreement</small>
-                    </div>
-                  </div>
-                  <Button  onClick={toggleSidebarTerms}  color='secondary btn-sm'>Edit</Button>
-                </div>
-            </CardBody>
-          </Card>
-        </Col>
 
-
-      <Col lg='12' sm='12'>
-        <Card className='card-transaction'>
-            <CardBody>
-              <div className='transaction-item'>
-                  <div className='d-flex'>
-                    <Avatar className='rounded' color='light-secondary' icon={<Layers size={18} />} />
-                    <div>
-                      <h6 className='transaction-title'>Staff and Client T&C</h6>
-                      <small>Edit/Add T&C</small>
-                    </div>
-                  </div>
-                  <Button  onClick={toggleSidebarStaffTerms} color='secondary btn-sm'>Edit</Button>
-                </div>
-            </CardBody>
-          </Card>
-        </Col>
         <Col lg='12' sm='12'>
         <Card className='card-transaction'>
             <CardBody>
@@ -216,7 +187,62 @@ const AccountTabs = ({ }) => {
         </Col> */}
 
         <Col lg='4' sm='6'>
-          <Card>
+        <Col lg='12' sm='12'>
+        <Card className='card-transaction'>
+            <CardBody>
+              <div className='transaction-item'>
+                  <div className='d-flex'>
+                    <Avatar className='rounded' color='light-success' icon={<Truck size={18} />} />
+                    <div>
+                      <h6 className='transaction-title'>Transport Module</h6>
+                      <small>Edit transport info</small>
+                    </div>
+                  </div>
+                  <Button  onClick={toggleSidebarTransport} color='success btn-sm'>Edit</Button>
+                </div>
+            </CardBody>
+          </Card>
+        </Col>
+        <Col lg='12' sm='12'>
+          <ModalNeutralVendors />
+          {/* <Card>
+          <CardHeader>
+            <CardTitle className='d-flex flex-row justify-content-between w-100' tag='h4'>Neutral Vendors 
+            <div className='form-switch form-check-success'>
+              <Input type='switch' defaultChecked id='NeutrlVendr' name='NeutrlVendr' />
+                <CustomLabel htmlFor='NeutrlVendr' />
+              </div>
+                </CardTitle>
+          </CardHeader>
+            <CardBody style={{paddingTop:"15px"}}>
+                              
+            <div className='d-flex flex-row justify-content-between w-100' >
+                <Label for='icon-primary' className='form-check-label mb-50'>
+                Do you want to invoice neutral vendor clients through 20X?
+                </Label>
+                <div className='form-switch form-check-secondary'>
+                  <Input type='switch' defaultChecked id='icon-primary' name='icon-primary' />
+                  <CustomLabel htmlFor='icon-primary' />
+                </div>
+              </div>
+              <br/>
+              <Label className='form-label'>Choose user types to add Neutral Vendors</Label>
+              <Select
+              isClearable={false}
+              theme={selectThemeColors}
+              defaultValue={[neutrlVendorsOptions[2], neutrlVendorsOptions[3]]}
+              isMulti
+              name='colors'
+              options={neutrlVendorsOptions}
+              className='react-select'
+              classNamePrefix='select'
+            />
+            </CardBody>
+          </Card> */}
+          </Col>
+        <Col lg='12' sm='12'>
+        </Col>
+          {/* <Card>
           <CardHeader>
             <CardTitle className='d-flex flex-row justify-content-between w-100' tag='h4'>Transport
             <div className='form-switch form-check-success'>
@@ -262,43 +288,44 @@ const AccountTabs = ({ }) => {
             <Input id='domainName' type='numebr' placeholder='12345 67780' />
         </div>
             </CardBody>
-          </Card>
+          </Card> */}
         </Col>
         <Col lg='4' sm='6'>
-          <Card>
-          <CardHeader>
-            <CardTitle className='d-flex flex-row justify-content-between w-100' tag='h4'>Neutral Vendors 
-            <div className='form-switch form-check-success'>
-              <Input type='switch' defaultChecked id='NeutrlVendr' name='NeutrlVendr' />
-                <CustomLabel htmlFor='NeutrlVendr' />
-              </div>
-                </CardTitle>
-          </CardHeader>
-            <CardBody style={{paddingTop:"15px"}}>
-                              
-            <div className='d-flex flex-row justify-content-between w-100' >
-                <Label for='icon-primary' className='form-check-label mb-50'>
-                Do you want to invoice neutral vendor clients through 20X?
-                </Label>
-                <div className='form-switch form-check-secondary'>
-                  <Input type='switch' defaultChecked id='icon-primary' name='icon-primary' />
-                  <CustomLabel htmlFor='icon-primary' />
+        <Col lg='12' sm='12'>
+        <Card className='card-transaction'>
+            <CardBody>
+              <div className='transaction-item'>
+                  <div className='d-flex'>
+                    <Avatar className='rounded' color='light-secondary' icon={<Layers size={18} />} />
+                    <div>
+                      <h6 className='transaction-title'>Staff agreement</h6>
+                      <small>Edit/Add agency agreement</small>
+                    </div>
+                  </div>
+                  <Button  onClick={toggleSidebarTerms}  color='secondary btn-sm'>Edit</Button>
                 </div>
-              </div>
-              <br/>
-              <Label className='form-label'>Choose user types to add Neutral Vendors</Label>
-              <Select
-              isClearable={false}
-              theme={selectThemeColors}
-              defaultValue={[neutrlVendorsOptions[2], neutrlVendorsOptions[3]]}
-              isMulti
-              name='colors'
-              options={neutrlVendorsOptions}
-              className='react-select'
-              classNamePrefix='select'
-            />
             </CardBody>
           </Card>
+        </Col>
+
+
+      <Col lg='12' sm='12'>
+        <Card className='card-transaction'>
+            <CardBody>
+              <div className='transaction-item'>
+                  <div className='d-flex'>
+                    <Avatar className='rounded' color='light-secondary' icon={<Layers size={18} />} />
+                    <div>
+                      <h6 className='transaction-title'>Staff and Client T&C</h6>
+                      <small>Edit/Add T&C</small>
+                    </div>
+                  </div>
+                  <Button  onClick={toggleSidebarStaffTerms} color='secondary btn-sm'>Edit</Button>
+                </div>
+            </CardBody>
+          </Card>
+        </Col>
+{/*  
           <Col lg='12' sm='12'>
           <Card>
           <CardHeader>
@@ -317,28 +344,10 @@ const AccountTabs = ({ }) => {
               className='react-select'
               classNamePrefix='select'
             />
-            {/* <UncontrolledButtonDropdown className='w-100'>
-        <DropdownToggle color='danger' caret>
-          Change Sector
-        </DropdownToggle>
-        <DropdownMenu>
-          <DropdownItem tag='option'>Health care</DropdownItem>
-          <DropdownItem  tag='option'>Education</DropdownItem>
-          <DropdownItem  tag='option'>Industrial</DropdownItem>
-        </DropdownMenu>
-      </UncontrolledButtonDropdown> */}
-              {/* <Label className='form-label'>Change Sector</Label> */}
-                  {/* <Select
-                    options={sectorOptions}
-                    className='react-select'
-                    classNamePrefix='select'
-                    components={{
-                      Option: OptionComponent
-                    }}
-                  /> */}
+
             </CardBody>
           </Card>
-        </Col>
+        </Col> */}
        
         </Col>
               
@@ -356,6 +365,7 @@ const AccountTabs = ({ }) => {
       <SidebarBranch open={sidebarOpenTerms} toggleSidebarTerms={toggleSidebarTerms} />
       <SidebarStaffTerms open={sidebarOpenStaffTerms} toggleSidebarStaffTerms={toggleSidebarStaffTerms} />
       <SidebarBranchManager open={sidebarOpenBranchManager} toggleSidebarBranchManager={toggleSidebarBranchManager} />
+      <SidebarTransport open={sidebarOpenTransport} toggleSidebarTransport={toggleSidebarTransport} />
       {/* <DeleteAccount /> */}
     </Fragment>
   )

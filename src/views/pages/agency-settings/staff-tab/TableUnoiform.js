@@ -30,7 +30,7 @@ import { Table, Badge, UncontrolledDropdown, DropdownMenu, DropdownItem, Dropdow
 
 const TableBranches = () => {
   return (
-    <Table hover responsive>
+    <Table responsive>
       <thead>
         <tr>
           <th>Actions</th>

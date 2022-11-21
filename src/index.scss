@@ -1,2 +1,37 @@
 @import '../node_modules/prismjs/themes/prism-tomorrow';
 @import './assets/scss/app.scss';
+@font-face {
+    font-family: "light";   /*Can be any text*/
+    src: local("Zoho Puvi Light"),
+      url("./fonts/Zoho\ Puvi\ Light.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Black";   /*Can be any text*/
+    src: local("Zoho Puvi Black"),
+      url("./fonts/Zoho\ Puvi\ Black.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Bold";   /*Can be any text*/
+    src: local("Zoho Puvi Bold"),
+      url("./fonts/Zoho\ Puvi\ Bold.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Medium";   /*Can be any text*/
+    src: local("Zoho Puvi Medium"),
+      url("./fonts/Zoho\ Puvi\ Medium.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Semibold";   /*Can be any text*/
+    src: local("Zoho Puvi Semibold"),
+      url("./fonts/Zoho\ Puvi\ Semibold.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Regular";   /*Can be any text*/
+    src: local("Zoho Puvi Regular"),
+      url("./fonts/Zoho\ Puvi\ Regular.ttf") format("truetype");
+  }
+@font-face {
+    font-family: "Thin";   /*Can be any text*/
+    src: local("Zoho Puvi Thin"),
+      url("./fonts/Zoho\ Puvi\ Thin.ttf") format("truetype");
+  }

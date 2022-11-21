@@ -23,11 +23,10 @@ const SidebarStaffTerms = ({ open, toggleSidebarStaffTerms }) => {
   }
   const [value, setValue] = useState(EditorState.createEmpty())
   return (
-    
     <Sidebar
       size='lg'
       open={open}
-      style={{maxWidth:'90%', width:'45em'}}
+      style={{maxWidth:'90%', width:'70em'}}
       title='Edit Staff/Client Terms & Conditions'
       headerClassName='mb-1'
       contentClassName='pt-0'
@@ -53,14 +52,17 @@ const SidebarStaffTerms = ({ open, toggleSidebarStaffTerms }) => {
             <option value='Client'>Client</option>
           </Input>
         </div>
-          <Editor editorState={value} onEditorStateChange={data => setValue(data)} />
-          <hr/>
-          <Button type='submit' className='me-1 ' color='primary'>
-          Submit
+        
+          <Editor editorState={value} style={{height:'400px'}} wrapperClassName="demo-wrapper" onEditorStateChange={data => setValue(data)} />
+          {/* <hr/> */}
+          <div style={{marginTop:'100px'}}>
+          <Button type='submit' className='me-1 ' color='success'>
+          Save
         </Button>
         <Button type='reset' color='secondary' outline onClick={toggleSidebarStaffTerms}>
           Cancel
         </Button>
+        </div>
           
 
     </Sidebar>

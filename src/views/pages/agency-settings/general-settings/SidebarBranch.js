@@ -32,7 +32,7 @@ const SidebarBranch = ({ open, toggleSidebarTerms }) => {
     
     <Sidebar
       size='lg'
-      style={{maxWidth:'90%', width:'45em'}}
+      style={{maxWidth:'90%', width:'70em'}}
       open={open}
       title='Edit/Add Agency Worker Agreement'
       headerClassName='mb-1'
@@ -66,14 +66,16 @@ const SidebarBranch = ({ open, toggleSidebarTerms }) => {
             />
             <FormText color='muted'>You can select multiple job roles as applicable</FormText>
         </div>
-          <Editor editorState={value} onEditorStateChange={data => setValue(data)} />
-          <hr/>
-          <Button type='submit' className='me-1 ' color='primary'>
-          Submit
+          <Editor editorState={value} wrapperClassName="demo-wrapper" onEditorStateChange={data => setValue(data)} />
+        
+          <div style={{marginTop:'100px'}}>
+          <Button type='submit' className='me-1 ' color='success'>
+          Save
         </Button>
         <Button type='reset' color='secondary' outline onClick={toggleSidebarTerms}>
           Cancel
         </Button>
+        </div>
           
 
     </Sidebar>
